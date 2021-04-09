@@ -1,2 +1,2 @@
-# template-fetchAPI-React
-React template with fetchAPI
+# GitHub-Jobs
+React + GitHub jobs search using an API
