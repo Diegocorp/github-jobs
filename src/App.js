@@ -1,16 +1,24 @@
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import useFetchData from './useFetchData';
+import { Container } from '@material-ui/core';
+import Job from '../src/components/Job';
+
 
 function App() {
-  const { data, loading, error } = useFetchData();
+  const [params, setParams] = useState({});
+  const [page, setPage] = useState(1);
+  const { data, loading, error } = useFetchData(params, page);
 
   return (
-    <div>
+    <Container>
       {loading && <h1>Loading...</h1>}
       {error && <h1>Error</h1>}
-      {data && <h1>{data.length}</h1>}
-    </div>
+      {data.map(job => {
+        return <Job key={job.id} job={job}/>
+      })}
+    </Container>
   );
 }
 
